@@ -1,0 +1,40 @@
+﻿@model InventarioLaEconomica.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalles del producto";
+}
+
+<h1>Detalles del producto</h1>
+
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">@Model.Nombre</dd>
+
+    <dt class="col-sm-3">Código</dt>
+    <dd class="col-sm-9">@Model.Codigo</dd>
+
+    <dt class="col-sm-3">Precio de compra</dt>
+    <dd class="col-sm-9">@Model.PrecioCompra</dd>
+
+    <dt class="col-sm-3">Precio de venta</dt>
+    <dd class="col-sm-9">@Model.PrecioVenta</dd>
+
+    <dt class="col-sm-3">Stock</dt>
+    <dd class="col-sm-9">@Model.Stock</dd>
+
+    <dt class="col-sm-3">Categoría</dt>
+    <dd class="col-sm-9">@Model.Categoria?.Nombre</dd>
+
+    <dt class="col-sm-3">Activo</dt>
+    <dd class="col-sm-9">@(Model.Activo ? "Sí" : "No")</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+    Editar
+</a>
+
+<a asp-action="Index" class="btn btn-secondary">
+    Volver
+</a>

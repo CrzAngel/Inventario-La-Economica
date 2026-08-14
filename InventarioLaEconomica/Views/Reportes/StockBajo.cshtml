@@ -1,0 +1,70 @@
+﻿@model IEnumerable<InventarioLaEconomica.Models.Producto>
+
+@{
+    ViewData["Title"] = "Reporte de Stock Bajo";
+}
+
+<style>
+    @@media print {
+        .no-imprimir {
+            display: none !important;
+        }
+
+        header,
+        footer {
+            display: none !important;
+        }
+    }
+</style>
+
+<h1>Reporte de Stock Bajo</h1>
+
+<p>Supermercado La Económica</p>
+
+<p>
+    Fecha:
+    @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+</p>
+
+<div class="no-imprimir mb-3">
+
+    <button onclick="window.print()" class="btn btn-primary">
+        Imprimir reporte
+    </button>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Volver al Dashboard
+    </a>
+
+</div>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Stock actual</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Codigo</td>
+                <td>@item.Nombre</td>
+                <td>@item.Categoria?.Nombre</td>
+                <td>@item.Stock</td>
+                <td>Stock bajo</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

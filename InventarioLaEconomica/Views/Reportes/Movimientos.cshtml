@@ -1,0 +1,66 @@
+﻿@model IEnumerable<InventarioLaEconomica.Models.MovimientoInventario>
+
+@{
+    ViewData["Title"] = "Reporte de Movimientos";
+}
+
+<style>
+    @@media print {
+        .no-imprimir {
+            display: none !important;
+        }
+
+        header,
+        footer {
+            display: none !important;
+        }
+    }
+</style>
+
+<h1>Historial de Movimientos</h1>
+
+<p>Supermercado La Económica</p>
+
+<p>
+    Fecha:
+    @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+</p>
+
+<div class="no-imprimir mb-3">
+
+    <button onclick="window.print()" class="btn btn-primary">
+        Imprimir reporte
+    </button>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Volver al Dashboard
+    </a>
+
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Producto?.Nombre</td>
+                <td>@item.Tipo</td>
+                <td>@item.Cantidad</td>
+                <td>@item.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.Descripcion</td>
+            </tr>
+        }
+    </tbody>
+</table>

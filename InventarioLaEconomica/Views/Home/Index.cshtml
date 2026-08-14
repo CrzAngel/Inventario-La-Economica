@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    .dashboard {
+        padding: 20px 0;
+    }
+
+    .dashboard h1 {
+        margin-bottom: 5px;
+    }
+
+    .dashboard-subtitle {
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .dashboard-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 25px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .dashboard-card h3 {
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    .dashboard-number {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .dashboard-links {
+        margin-top: 30px;
+    }
+
+    .dashboard-links a {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        border: 1px solid #333;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .dashboard-links a:hover {
+        background: #eee;
+    }
+</style>
+
+<div class="dashboard">
+
+    <h1>Dashboard de Inventario</h1>
+
+    <p class="dashboard-subtitle">
+        Supermercado La Económica
+    </p>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>Productos</h3>
+            <div class="dashboard-number">
+                @ViewBag.TotalProductos
+            </div>
+            <p>Productos registrados</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Categorías</h3>
+            <div class="dashboard-number">
+                @ViewBag.TotalCategorias
+            </div>
+            <p>Categorías registradas</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Proveedores</h3>
+            <div class="dashboard-number">
+                @ViewBag.TotalProveedores
+            </div>
+            <p>Proveedores registrados</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Stock bajo</h3>
+            <div class="dashboard-number">
+                @ViewBag.StockBajo
+            </div>
+            <p>Productos con 5 unidades o menos</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-links">
+
+        <a asp-controller="Productos" asp-action="Index">
+            Ver productos
+        </a>
+
+        <a asp-controller="Categorias" asp-action="Index">
+            Ver categorías
+        </a>
+
+        <a asp-controller="Proveedores" asp-action="Index">
+            Ver proveedores
+        </a>
+
+        <a asp-controller="MovimientosInventario" asp-action="Index">
+            Movimientos
+        </a>
+
+    </div>
+
+</div>
